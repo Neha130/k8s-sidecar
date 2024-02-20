@@ -8,12 +8,7 @@ RUN apk add --no-cache gcc && \
 	.venv/bin/pip install --no-cache-dir -r requirements.txt && \
     rm requirements.txt && \
 	find /app/.venv \( -type d -a -name test -o -name tests \) -o \( -type f -a -name '*.pyc' -o -name '*.pyo' \) -exec rm -rf '{}' \+
-RUN apt-get update && \
-    apt-get install -y curl && \
-    rm -rf /var/lib/apt/lists/*
-RUN apt-get update && \
-    apt-get install -y git && \
-    rm -rf /var/lib/apt/lists/*
+
 
 
 FROM base
@@ -21,6 +16,14 @@ LABEL org.opencontainers.image.source=https://github.com/kiwigrid/k8s-sidecar
 LABEL org.opencontainers.image.description="K8s sidecar image to collect configmaps and secrets as files"
 LABEL org.opencontainers.image.licenses=MIT
 ENV         PYTHONUNBUFFERED=1
+
+# Update and install Git
+RUN apk update && \
+    apk add git
+# Update and install Curl
+RUN apk update && \
+    apk add curl
+
 WORKDIR /app
 COPY --from=builder /app /app
 ENV PATH="/app/.venv/bin:$PATH"
