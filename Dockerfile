@@ -18,5 +18,3 @@ RUN apk update && \
     
 RUN chmod +x /app/git.sh
 
-# Define the default command to run when the container starts
-CMD ["/app/git.sh"]
