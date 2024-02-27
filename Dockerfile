@@ -17,4 +17,6 @@ RUN apk update && \
     apk add rsync
     
 RUN chmod +x /app/git.sh
+#CMD ["sh /app/myscript.sh"]
+CMD ["sh","/app/git.sh"]
 
