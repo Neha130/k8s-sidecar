@@ -42,7 +42,7 @@ while true; do
         git pull origin main
        # cp -r ./* ../../git/grafana-dashbaord/devtron-provider-test
 #       cp -r /share/grafana-dashboard/* ./git/grafana-dashbaord/devtron-provider-test 
-    rsync -a --delete /tmp/share/grafana-dashboard/  /tmp/git/grafana-dashbaord/devtron-provider-test/
+    rsync -a --delete /app/share/grafana-dashboard/  /tmp/git/grafana-dashbaord/devtron-provider-test/
    
 
         # Check if changes were pulled
