@@ -8,6 +8,14 @@ WORKDIR /app
 COPY git.sh /app/git.sh
 
 # Make the script executable
+RUN apk update && \
+    apk add git
+# Update and install Curl
+RUN apk update && \
+    apk add curl
+RUN apk update && \
+    apk add rsync
+    
 RUN chmod +x /app/git.sh
 
 # Define the default command to run when the container starts
