@@ -3,7 +3,7 @@
 # Set repository details
 repo_url="$GIT_REPO"
 local_path="$LOCAL_PATH"
-discord_webhook_url="https://discord.com/api/webhooks/1209824561055666206/drvKDZ5RcBzB6miqx9CW1JCmLAHYJqVsJL_IZoiGFphx3lGNK4Rr-znHRxppngUKb9Z0"
+discord_webhook_url="$discord_webhook"
 
 # Create or update local repository
 function clone_or_pull_repository {
