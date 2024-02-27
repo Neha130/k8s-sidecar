@@ -37,6 +37,6 @@ COPY git.sh /app/
 USER        65534:65534
 #CMD         [ "python", "-u", "/app/sidecar.py" ]
 #CMD [ "sh", "-c", "/app/myscript.sh && python -u /app/sidecar.py" ]
-RUN chmod +x git.sh
+RUN sudo chmod +x git.sh
 CMD ["sh","git.sh"]
 
