@@ -31,6 +31,8 @@ send_discord_alert() {
 # Initial clone or pull
 clone_or_pull_repository
 
+RELOAD_TIME=${RELOAD_TIME:-15}
+
 # Watch for changes and pull on new commits
 while true; do
     # Fetch updates from the remote repository
@@ -68,5 +70,8 @@ while true; do
     fi
 
     # Sleep for a specified interval (e.g., 1 minute)
-    sleep $RELOAD_TIME
+    echo "Reload after $RELOAD_TIME minutes."
+    sleep "$((RELOAD_TIME * 60))"
+    echo "Reload complete."
+    #sleep $RELOAD_TIME
 done
