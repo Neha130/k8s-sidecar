@@ -31,7 +31,7 @@ send_discord_alert() {
 # Initial clone or pull
 clone_or_pull_repository
 
-RELOAD_TIME=${RELOAD_TIME:-15}
+RELOAD_TIME=${RELOAD_TIME:-900}
 
 # Watch for changes and pull on new commits
 while true; do
