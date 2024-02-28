@@ -4,7 +4,7 @@ repo_url="$GIT_REPO"
 local_path="$LOCAL_PATH"
 discord_webhook_url="$discord_webhook"
 
-clone_or_pull_repository {
+function clone_or_pull_repository {
     # if [ -d "$local_path" ]; then
     #     # If the directory exists, pull changes
     #     echo "Pulling changes for existing repository..."
