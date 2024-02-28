@@ -70,7 +70,7 @@ while true; do
     fi
 
     # Sleep for a specified interval (e.g., 1 minute)
-    echo "Reload after $RELOAD_TIME minutes."
+    echo "Reload after $RELOAD_TIME "
     sleep "$((RELOAD_TIME))"
     echo "Reload complete."
     #sleep $RELOAD_TIME
