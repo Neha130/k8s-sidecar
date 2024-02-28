@@ -23,7 +23,6 @@ while true; do
     if [ "$(git rev-parse HEAD)" != "$(git rev-parse origin/main)" ]; then
         echo "New commit detected. Pulling changes..."
         git pull origin main
-        rsync -a --delete /app/share/grafana-dashboard/  /tmp/git/grafana-dashbaord/devtron-provider-test/
         if [ $? -eq 0 ]; then
             # If changes 
             echo "Changes pulled successfully."
