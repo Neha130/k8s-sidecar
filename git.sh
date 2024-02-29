@@ -18,7 +18,6 @@ send_discord_alert() {
     curl -H "Content-Type: application/json" -d "${payload}" "${discord_webhook_url}"
 }    
 clone_or_pull_repository
-RELOAD_TIME=${RELOAD_TIME:-900}
 while true; do
     git fetch origin main
     if [ "$(git rev-parse HEAD)" != "$(git rev-parse origin/main)" ]; then
@@ -39,7 +38,7 @@ while true; do
             echo "No new commits in the repository."
         fi
     fi
-    echo "Next update scheduled after $RELOAD_TIME seconds"
-    sleep "$((RELOAD_TIME))"
+    echo 'Next update scheduled after $RELOAD_TIME seconds'
+    sleep $RELOAD_TIME
     echo "Reload complete."
 done
