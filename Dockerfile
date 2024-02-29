@@ -9,12 +9,7 @@ COPY git.sh /app/git.sh
 
 # Make the script executable
 RUN apk update && \
-    apk add git
-# Update and install Curl
-RUN apk update && \
-    apk add curl
-RUN apk update && \
-    apk add rsync
+    apk add git curl
     
 RUN chmod +x /app/git.sh
 #CMD ["sh /app/myscript.sh"]
