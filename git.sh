@@ -7,6 +7,7 @@ discord_webhook_url="$discord_webhook"
 function clone_or_pull_repository {
         # If the directory doesn't exist, clone the repository
         echo "Cloning the repository for the first time..."
+        mkdir -p "$local_path" || { echo "Failed to create directory"; exit 1; }
         git clone "$repo_url" "$local_path" || { echo "Clone failed"; exit 1; }
         cd "$local_path" || { echo "Directory not found"; exit 1; }
 }
@@ -22,7 +23,6 @@ while true; do
     if [ "$(git rev-parse HEAD)" != "$(git rev-parse origin/main)" ]; then
         echo "New commit detected. Pulling changes..."
         git pull origin main
-        rsync -a --delete /app/share/grafana-dashboard/  /tmp/git/grafana-dashbaord/devtron-provider-test/
         if [ $? -eq 0 ]; then
             # If changes 
             echo "Changes pulled successfully."
