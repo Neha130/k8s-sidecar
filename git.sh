@@ -7,8 +7,9 @@ discord_webhook_url="$discord_webhook"
 function clone_or_pull_repository {
         # If the directory doesn't exist, clone the repository
         echo "Cloning the repository for the first time..."
-        git clone "$repo_url" "$local_path" || { echo "Clone failed"; exit 1; }
+        ls                
         cd "$local_path" || { echo "Directory not found"; exit 1; }
+        git clone "$repo_url" "$local_path" || { echo "Clone failed"; exit 1; }
 }
 send_discord_alert() {                                                           
     error_message="Failed to reload Grafana dashboards. HTTP Status code: $reload_response"
