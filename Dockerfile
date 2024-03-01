@@ -10,8 +10,14 @@ COPY git.sh /app/git.sh
 # Make the script executable
 RUN apk update && \
     apk add git curl
+
+    
+
     
 RUN chmod +x /app/git.sh
 #CMD ["sh /app/myscript.sh"]
+
+USER        65534:65534
+
 CMD ["sh","/app/git.sh"]
 
