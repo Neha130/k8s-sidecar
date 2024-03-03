@@ -11,8 +11,8 @@ RUN chmod -R 755 /app
 COPY git.sh /app/git.sh
 
 
-#RUN chown -R devtron:devtron /app/git.sh
-RUN chown -R devtron:devtron /app/test
+RUN chown -R devtron:devtron /app/git.sh
+RUN chown -R devtron:devtron /app
 
 
 # Make the script executable
