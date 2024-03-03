@@ -17,7 +17,7 @@ RUN apk update && \
 RUN chmod +x /app/git.sh
 #CMD ["sh /app/myscript.sh"]
 
-USER        65534:65534
+USER devtron
 
 CMD ["sh","/app/git.sh"]
 
