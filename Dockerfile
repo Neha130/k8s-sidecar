@@ -5,13 +5,14 @@ FROM alpine:latest
 WORKDIR /app
 
 RUN addgroup -S devtron && adduser -S -G devtron devtron
-RUN chmod -R 755 /app
+RUN chmod -R 755 /app/test
 
 # Copy the Bash script into the container
 COPY git.sh /app/git.sh
 
 
 RUN chown -R devtron:devtron /app/git.sh
+RUN chown -R devtron:devtron /app/test
 
 
 # Make the script executable
