@@ -4,10 +4,11 @@ FROM alpine:latest
 # Set the working directory inside the container
 WORKDIR /app
 
-RUN adduser -D devtron
+RUN addgroup -S devtron && adduser -S -G devtron devtron
 
 # Copy the Bash script into the container
 COPY git.sh /app/git.sh
+
 
 RUN chown -R devtron:devtron /app/git.sh
 
