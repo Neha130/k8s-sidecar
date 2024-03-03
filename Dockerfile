@@ -7,6 +7,9 @@ WORKDIR /app
 # Copy the Bash script into the container
 COPY git.sh /app/git.sh
 
+RUN chown -R devtron:devtron /app/git.sh
+
+
 # Make the script executable
 RUN apk update && \
     apk add git curl
@@ -17,7 +20,6 @@ RUN apk update && \
 RUN chmod +x /app/git.sh
 #CMD ["sh /app/myscript.sh"]
 
-RUN chown -R devtron:devtron /app/test
 
 USER devtron
 
