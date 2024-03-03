@@ -5,22 +5,22 @@ FROM alpine:latest
 WORKDIR /app
 
 RUN addgroup -S devtron && adduser -S -G devtron devtron
-RUN chmod -R 755 /app
+
 
 # Copy the Bash script into the container
 COPY git.sh /app/git.sh
 
 
 RUN chown -R devtron:devtron /app/git.sh
-RUN chown -R devtron:devtron /app
+
 
 
 # Make the script executable
 RUN apk update && \
     apk add git curl
 
-    
-
+RUN chmod -R 755 /app/test
+RUN chown -R devtron:devtron /app/test
     
 RUN chmod +x /app/git.sh
 #CMD ["sh /app/myscript.sh"]
