@@ -12,14 +12,14 @@ COPY git.sh /app/git.sh
 
 
 RUN chown -R devtron:devtron /app/git.sh
-RUN chown -R devtron:devtron /app/test
+RUN chown -R devtron:devtron /app/*
 
 
 # Make the script executable
 RUN apk update && \
     apk add git curl
     
-RUN chmod -R 755 /app/test
+RUN chmod -R 755 /app/*
 
     
 RUN chmod +x /app/git.sh
