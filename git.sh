@@ -1,6 +1,7 @@
 #!/bin/bash
 
 repo_url="$GIT_REPO"
+repo_name="$GIT_REPO_NAME"
 local_path="$LOCAL_PATH"
 discord_webhook_url="$discord_webhook"
 
@@ -13,7 +14,7 @@ function clone_or_pull_repository {
         pwd
         ls
         git clone "$repo_url"  || { echo "Clone failed"; exit 1; }
-        cd grafana-dashboard
+        cd $repo_name
         ls
        
 }
