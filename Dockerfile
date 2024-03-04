@@ -4,14 +4,13 @@ FROM alpine:latest
 # Set the working directory inside the container
 WORKDIR /app
 
-RUN addgroup -S devtron && adduser -S -G devtron devtron
+
 
 
 # Copy the Bash script into the container
 COPY git.sh /app/git.sh
 
 
-RUN chown -R devtron:devtron /app/git.sh
 
 
 
@@ -19,14 +18,13 @@ RUN chown -R devtron:devtron /app/git.sh
 RUN apk update && \
     apk add git curl
 
-RUN chmod -R 755 /app/test
-RUN chown -R devtron:devtron /app/test
+
     
 RUN chmod +x /app/git.sh
 #CMD ["sh /app/myscript.sh"]
 
 
-USER devtron
+
 
 CMD ["sh","/app/git.sh"]
 
