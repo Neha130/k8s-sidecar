@@ -24,6 +24,7 @@ RUN chmod +x /app/git.sh
 #CMD ["sh /app/myscript.sh"]
 
 
+USER devtron
 
 
 CMD ["sh","/app/git.sh"]
