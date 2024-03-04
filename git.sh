@@ -13,6 +13,7 @@ function clone_or_pull_repository {
         pwd
         ls
         git clone "$repo_url"  || { echo "Clone failed"; exit 1; }
+        cd grafana-dashboard
         ls
        
 }
