@@ -12,7 +12,7 @@ function clone_or_pull_repository {
         cd "$local_path" || { echo "Directory not found"; exit 1; }
         pwd
         ls
-        git clone "$repo_url" . || { echo "Clone failed"; exit 1; }
+        git clone "$repo_url"  || { echo "Clone failed"; exit 1; }
         ls
        
 }
