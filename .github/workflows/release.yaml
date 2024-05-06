@@ -20,7 +20,4 @@ jobs:
       run: |
         echo $GIT_CONFIG_NAME
       env:
-        GH_TOKEN: ${{ secrets.GIT_TOKEN }}
-        RELEASE_BRANCH: ${{ secrets.RELEASE_BRANCH }}
         GIT_CONFIG_NAME: ${{ env.GH_SYSTEMSDT_USERNAME }}
-        GIT_CONFIG_EMAIL: ${{ secrets.GIT_TARGET_EMAIL }}
