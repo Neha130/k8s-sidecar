@@ -1,15 +1,23 @@
 #!/bin/bash
 
 repo_url="$GIT_REPO"
+repo_name="$GIT_REPO_NAME"
 local_path="$LOCAL_PATH"
 discord_webhook_url="$discord_webhook"
+git_branch="$GIT_BRANCH"
 
 function clone_or_pull_repository {
         # If the directory doesn't exist, clone the repository
         echo "Cloning the repository for the first time..."
-        mkdir -p "$local_path" || { echo "Failed to create directory"; exit 1; }
-        git clone "$repo_url" "$local_path" || { echo "Clone failed"; exit 1; }
-        cd "$local_path" || { echo "Directory not found"; exit 1; }
+        ls             
+        ls -a /app
+        cd $local_path || { echo "Directory not found"; exit 1; }
+        pwd
+        ls
+        git clone $repo_url  || { echo "Clone failed"; exit 1; }
+        cd $repo_name
+        ls
+       
 }
 send_discord_alert() {                                                           
     error_message="Failed to reload Grafana dashboards. HTTP Status code: $reload_response"
@@ -17,12 +25,11 @@ send_discord_alert() {
     curl -H "Content-Type: application/json" -d "${payload}" "${discord_webhook_url}"
 }    
 clone_or_pull_repository
-RELOAD_TIME=${RELOAD_TIME:-900}
 while true; do
-    git fetch origin main
-    if [ "$(git rev-parse HEAD)" != "$(git rev-parse origin/main)" ]; then
+    git fetch origin $git_branch
+    if [ "$(git rev-parse HEAD)" != "$(git rev-parse origin/$git_branch)" ]; then
         echo "New commit detected. Pulling changes..."
-        git pull origin main
+        git pull origin $git_branch
         if [ $? -eq 0 ]; then
             # If changes 
             echo "Changes pulled successfully."
@@ -39,6 +46,6 @@ while true; do
         fi
     fi
     echo "Next update scheduled after $RELOAD_TIME seconds"
-    sleep "$((RELOAD_TIME))"
+    sleep $RELOAD_TIME
     echo "Reload complete."
 done
